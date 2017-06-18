@@ -19,6 +19,7 @@ public class window_sum{
         res.toArray(ans);
         return ans;
     }
+
     public static void main(String[] args){
         int[] arr = {4,2,73,11,-5};
         Integer[] res = new window_sum().windowSum(arr, 2);
