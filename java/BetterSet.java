@@ -1,3 +1,5 @@
+/*** pure storage ***/
+
 public class BetterSet{
     public static void main(String[] args){
         BetterSet bs = new BetterSet();
