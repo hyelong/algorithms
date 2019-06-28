@@ -5,7 +5,7 @@ public class menu_order{
         menu_order m = new menu_order();
         int[] menu = new int[]{215,275,335,420,580,655};
         int bill = 1505;
-        List<List<Integer>> res = m.order(menu,0, 1505);
+        List<List<Integer>> res = m.order(menu,0, bill);
         for(List<Integer> list : res){
             System.out.println(list.toString());
         }
