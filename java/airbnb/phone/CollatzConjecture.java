@@ -13,6 +13,7 @@ public class CollatzConjecture {
         Map<Integer, Integer> cache = new HashMap<>();
         for (int i = 1; i <= num; i++) {
             int steps = count(i, cache);
+            // int steps = recursiveCount(num, cache);
             res = Math.max(res, steps);
             System.out.println(i + ":" + steps);
         }
@@ -37,5 +38,12 @@ public class CollatzConjecture {
         }
         cache.put(origin, steps);
         return steps;
+    }
+
+    private static int recursiveCount(int num, Map<Integer, Integer> cache) {
+        if (num <= 1) return 1;
+        if (cache.containsKey(num)) return cache.get(num);
+        if (num % 2 == 0) return 1 + recursiveCount(num / 2, cache);
+        else return 1 + recursiveCount(num * 3 + 1, cache);
     }
 }
