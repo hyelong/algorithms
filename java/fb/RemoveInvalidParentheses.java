@@ -11,45 +11,31 @@ public class RemoveInvalidParentheses {
         String s6 =   ")a(b)c()(";
             
             
-           
-        System.out.println(removep(s1));
-        System.out.println(removep(s2));
-        System.out.println(removep(s3));
-        System.out.println(removep(s4));
-        System.out.println(removep(s5));
-        System.out.println(removep(s6));
+        char[] pair = new char[]{')', '('};
+        System.out.println(removep(new StringBuiler(s1), pair));
+        System.out.println(removep(new StringBuiler(s2), pair));
+        System.out.println(removep(new StringBuiler(s3), pair));
+        System.out.println(removep(new StringBuiler(s4), pair));
+        System.out.println(removep(new StringBuiler(s5), pair));
+        System.out.println(removep(new StringBuiler(s6), pair));
     }
-    public static String removep(String s){
-        if(s==null || s.length()==0)
-            return s;
-        StringBuilder res = new StringBuilder();
-        Stack<Character> st = new Stack<Character>();
+    public static String removep(StringBuilder sb, char[] pair){
+        if (sb == null) return null;
         int lc = 0; 
-        for(int i=0;i<s.length();i++){
-            char c = s.charAt(i);
-            if(c == '('){
-                st.push(c);
+        for(int i=0;i<sb.length();i++){
+            char c = sb.charAt(i);
+            if(c == pair[0]){
                 lc++;
             }
-            else if(c == ')'){
+            else if(c == pair[1]){
                 if(lc == 0){//skip
                     continue;
                 }else{
                     lc--;
-                    st.push(c);
                 }
             }
-            else
-              st.push(c);  
         }
-        while(!st.empty()){
-            char c = st.pop();
-            if(c == '(' && lc >0){
-                lc--;
-                continue;
-            }
-            res.append(c);
-        }
+        if (pair[0] == '(') removep(sb.reverse(), new char[]{')', '('});
         return res.reverse().toString();
     }
 }
