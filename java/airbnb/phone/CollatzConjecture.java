@@ -12,8 +12,8 @@ public class CollatzConjecture {
         int res = 0;
         Map<Integer, Integer> cache = new HashMap<>();
         for (int i = 1; i <= num; i++) {
-            int steps = count(i, cache);
-            // int steps = recursiveCount(num, cache);
+            // int steps = count(i, cache);
+            int steps = recursiveCount(num, cache);
             res = Math.max(res, steps);
             System.out.println(i + ":" + steps);
         }
