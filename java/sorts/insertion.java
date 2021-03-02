@@ -15,6 +15,7 @@ public class insertion{
         for(int i = 1; i<n; i++){
             int j = i-1;
             int value = arr[i];
+            // shift 1 position
             while(j>=0 && arr[j]>value){
                 arr[j+1] = arr[j];
                 j--;

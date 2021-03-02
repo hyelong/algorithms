@@ -3,7 +3,6 @@ import java.lang.*;
 
 public class RemoveInvalidParentheses {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         String s1="a(b))";
         String s2 = "(a(c()b)";
         String s3 =")(";
