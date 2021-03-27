@@ -5,16 +5,10 @@
 #include <iostream>
 using namespace std;
 
-bool is_compound(string s, unordered_set<string>& wordDict) {
-    if(wordDict.size()==0) return false;
-    unordered_map<int,bool> dp;
-    return helper(s,0,wordDict,dp);
-}
-
-bool helper(string& s, int index, unordered_set<string>& wordDict, unordered_map<int,bool>& dp){
+bool helper(string& s, size_t index, unordered_set<string>& wordDict, unordered_map<int,bool>& dp){
     if(index==s.length()) return true;
     if(dp.find(index)!=dp.end()) return dp[index];
-    for(int i = index; i<s.length();i++){
+    for(size_t i = index; i<s.length();i++){
         string sub = s.substr(index, i+1-index);
         if(wordDict.find(sub)!=wordDict.end()){
             bool b = helper(s, i+1, wordDict, dp);
@@ -23,6 +17,12 @@ bool helper(string& s, int index, unordered_set<string>& wordDict, unordered_map
         }
     }
     return false;
+}
+
+bool is_compound(string s, unordered_set<string>& wordDict) {
+    if(wordDict.size()==0) return false;
+    unordered_map<int,bool> dp;
+    return helper(s,0,wordDict,dp);
 }
 
 vector<string> simples(string[] words){
@@ -37,8 +37,7 @@ vector<string> simples(string[] words){
             res.push_back(word);
         }
         wordDict.insert(word);
-    }
-    
+    }    
     return res;
 }
 
