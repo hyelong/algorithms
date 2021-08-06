@@ -21,12 +21,16 @@ public class BetterSet{
         bucket[x] = count;
         seq_array[count] = x;
         count++;
+        // after add finished, bucket[x] is always smaller than count.
     }
 
     public void remove(int x){
         if(contains(x)){
             int index = bucket[x];
-            seq_array[index] = seq_array[count-1];
+            // put the last element to the position which is currently removed
+            int last = seq_array[count-1];
+            seq_array[index] = last;
+            bucket[last] = index;
             count--;
         }
     }
